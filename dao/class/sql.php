@@ -39,6 +39,18 @@ class Sql extends PDO
         return $stmt;
     }
 
+    public function execQueryInsert($rawQuery, $params = array())
+    {
+
+        $stmt = $this->conn->prepare($rawQuery);
+
+        $this->setParams($stmt, $params);
+
+        $stmt->execute();
+
+    }
+
+
     public function select($rawQuery, $params = array()): array
     {
 
